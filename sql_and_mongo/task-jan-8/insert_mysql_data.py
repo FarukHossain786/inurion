@@ -12,6 +12,7 @@ array_index = indexs_data.split(',')
 cursor.execute("SHOW TABLES LIKE 'glassdata';")
 tables = cursor.fetchall()
 if(not tables):
+    # Query build for creating table
     query = "CREATE TABLE glassdata("
     count = 0
     while count < len(array_index):
@@ -30,6 +31,7 @@ if(not tables):
 
 for i in lines[1: ]:
     datas = i.split(',')
+    # Query building for insert data
     insert = """INSERT INTO `glassdata`(`"""+"`, `".join(array_index)+"`) values("
     count = 0
     while count < len(datas):
